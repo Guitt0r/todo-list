@@ -33,17 +33,16 @@ cd ../client
 yarn
 ```
 
-### Run
+## Run
 
+Run client:
 ```
-# Run client:
-```bash
 yarn start
 ```
-# Run backend:
-```bash
-yarn serve
+
+Run backend:
 ```
+yarn serve
 ```
 
 - Version: 1.0.0
