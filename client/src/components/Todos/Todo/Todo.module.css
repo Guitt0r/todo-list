@@ -1,0 +1,52 @@
+.todoWrapper {
+    border: 2px solid #142446;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: palevioletred;
+    color: white;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.todoText {
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.completeTodo {
+    text-decoration: line-through;
+}
+.activateTodoButton{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 1px 10px black;
+    background-color: #ff1515;
+    padding: 10px;
+    border-radius: 30px;
+}
+.completeTodoButton{
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 1px 10px black;
+    background-color: #6bff15;
+    padding: 10px;
+    border-radius: 30px;
+}
+.deleteIcon{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 3px solid black;
+    box-sizing: border-box;
+    padding: 2px;
+    margin-left: 10px;
+    width:35px
+}
+input{
+    font-size: 20px;
+}
