@@ -38,35 +38,29 @@ export const todoReducer = (state = initialState, action) => {
             return state
     }
 }
-//set all todos in state
 const setTodosSuccess = (todos) => ({type: SET_TODOS_SUCCESS, todos})
 const addTodoSuccess = (todo) => ({type: ADD_TODO_SUCCESS, todo})
 const changeTodosSuccess = (todo) => ({type: CHANGE_TODO_SUCCESS, todo})
 const deleteTodosSuccess = (todo) => ({type: DELETE_TODO_SUCCESS, todo})
 
-//get all todos,then dispatch setTodosAC
 export const getTodos = () => async (dispatch) => {
     const res = await todoAPI.getTodos()
-    dispatch(setTodosSuccess(res.data)
+    dispatch(setTodosSuccess(res.todos)
     )
 }
-//add new todoItem
 export const addTodo = (text) => async (dispatch) => {
     const res = await todoAPI.addTodo(text)
-    dispatch(addTodoSuccess(res.data))
+    dispatch(addTodoSuccess(res.todo))
 }
-//delete todoItem
 export const deleteTodo = (todoId) => async (dispatch) => {
     const res = await todoAPI.deleteTodo(todoId)
-    dispatch(deleteTodosSuccess(res.data))
+    dispatch(deleteTodosSuccess(res.todo))
 }
-//complete/make active todoItem
 export const completeTodo = (todoId) => async (dispatch) => {
     const res = await todoAPI.completeTodo(todoId)
-    dispatch(changeTodosSuccess(res.data))
+    dispatch(changeTodosSuccess(res.todo))
 }
-//update todoItem text
 export const updateTodoText = (todoId, text) => async (dispatch) => {
     const res = await todoAPI.saveTodo(todoId, text)
-    dispatch(changeTodosSuccess(res.data))
+    dispatch(changeTodosSuccess(res.todo))
 }

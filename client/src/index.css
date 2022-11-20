@@ -1,6 +1,7 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body{
-    background-color: papayawhip;
-    padding: 10px;
+    background-color: whitesmoke;
 }
