@@ -1,30 +1,34 @@
-import {useState} from "react";
+import {ChangeEvent, FC, useState} from "react";
 import DeleteButton from "../common/DeleteButton/DeleteButton";
 import ToggleActiveButton from "../common/ToggleActiveButton/ToggleActiveButton";
-import {useDispatch} from "react-redux";
-import {completeTodo, deleteTodo, updateTodoText} from "../../redux/todo-reducer";
+import {deleteTodo, updateTodo} from "../../redux/todo-reducer";
 import {dateConvertor} from "../../utils/dateConvertor";
+import {TodoType} from "../../types/Todo.type";
+import {useAppDispatch} from "../../hooks/custom-react-redux";
+import React from "react";
 
-const Todo = ({_id, text, isComplete, updatedAt}) => {
+type Props = TodoType
+
+const Todo: FC<Props> = ({_id, text, isComplete, updatedAt}) => {
     const [editMode, setEditMode] = useState(false)
     const [inputText, setInputText] = useState(text)
     const publishedDate = dateConvertor(updatedAt)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const onComplete = () => {
-        dispatch(completeTodo(_id))
+        dispatch(updateTodo(_id, {isComplete: !isComplete}))
     }
     const onDelete = () => {
         dispatch(deleteTodo(_id))
     }
-    const onTextChange = (e) => {
-        setInputText(e.target.value)
+    const onTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputText(e.currentTarget.value)
     }
     const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
-        dispatch(updateTodoText(_id, inputText))
+        dispatch(updateTodo(_id, {text: inputText}))
         setEditMode(false)
     }
 

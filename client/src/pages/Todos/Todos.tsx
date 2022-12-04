@@ -1,18 +1,21 @@
 import Todo from "../../components/Todo/Todo";
-import {useDispatch, useSelector} from "react-redux";
 import {addTodo, getTodos} from "../../redux/todo-reducer";
-import {useEffect} from "react";
+import {FC, useEffect} from "react";
 import AddTodoForm from "../../components/AddTodoForm/AddTodoForm";
 import {selectTodos} from "../../redux/todo-selector";
 import Clock from "../../components/common/Clock/Clock";
+import {useAppDispatch, useAppSelector} from "../../hooks/custom-react-redux";
+import React from "react";
 
-const Todos = () => {
-    const dispatch = useDispatch()
+type Props = {}
+
+const Todos: FC<Props> = () => {
+    const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getTodos())
     }, [dispatch])
-    const todos = useSelector(selectTodos)
-    const onAddTodo = (text) => {
+    const todos = useAppSelector(selectTodos)
+    const onAddTodo = (text: string) => {
         dispatch(addTodo(text))
     }
 
