@@ -9,6 +9,7 @@ Simple todo list write on the MERN stack
 - React
 - React Bootstrap
 - Redux
+- Typescript
 
 ## Usage
 
